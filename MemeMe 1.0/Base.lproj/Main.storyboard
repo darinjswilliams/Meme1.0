@@ -18,32 +18,95 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cpo-Si-BUj">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                                <items>
-                                    <barButtonItem title="Pick" id="VwI-tp-CqV"/>
-                                </items>
-                            </toolbar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xNw-nO-rI0">
-                                <rect key="frame" x="67" y="274" width="240" height="171"/>
-                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="hZr-Bc-eY8">
+                                <rect key="frame" x="5" y="30" width="350" height="627"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a9c-Gx-uxh">
+                                        <rect key="frame" x="0.0" y="0.0" width="350" height="30"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hxW-Hb-k6N">
+                                                <rect key="frame" x="0.0" y="0.0" width="40" height="30"/>
+                                                <state key="normal" title="Share"/>
+                                                <connections>
+                                                    <action selector="shareImages:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ECv-0t-pvd"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZZj-Uj-21D">
+                                                <rect key="frame" x="302" y="0.0" width="48" height="30"/>
+                                                <state key="normal" title="Cancel"/>
+                                                <connections>
+                                                    <action selector="cancelImageSelection:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LBQ-g5-py5"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="VsQ-zx-OGo">
+                                        <rect key="frame" x="0.0" y="49" width="350" height="515"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" borderStyle="roundedRect" textAlignment="center" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="uVf-LD-try">
+                                                <rect key="frame" x="0.0" y="0.0" width="350" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                                            </textField>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="IJ4-Ie-9G9">
+                                                <rect key="frame" x="0.0" y="36" width="350" height="443"/>
+                                            </imageView>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" borderStyle="roundedRect" textAlignment="center" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="Guf-Ec-bHr">
+                                                <rect key="frame" x="0.0" y="485" width="350" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cpo-Si-BUj">
+                                        <rect key="frame" x="0.0" y="583" width="350" height="44"/>
+                                        <items>
+                                            <barButtonItem title="Pick" id="VwI-tp-CqV">
+                                                <connections>
+                                                    <action selector="pickAnImageFromAlbum:" destination="BYZ-38-t0r" id="Pqg-yZ-GJ3"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="Ct9-JN-heq"/>
+                                            <barButtonItem style="plain" id="fBI-nX-a2J">
+                                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="fLO-Oz-wTL">
+                                                    <rect key="frame" x="280" y="7" width="54" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Camera"/>
+                                                </button>
+                                                <connections>
+                                                    <action selector="pickAnImageFromCamera:" destination="BYZ-38-t0r" id="jn3-9P-WBz"/>
+                                                </connections>
+                                            </barButtonItem>
+                                        </items>
+                                    </toolbar>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Cpo-Si-BUj" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="UaH-zU-NMh"/>
-                            <constraint firstItem="Cpo-Si-BUj" firstAttribute="top" secondItem="xNw-nO-rI0" secondAttribute="bottom" constant="177" id="af3-1H-7DH"/>
-                            <constraint firstItem="Cpo-Si-BUj" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="ja9-JF-WSJ"/>
-                            <constraint firstItem="Cpo-Si-BUj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="klQ-un-eAt"/>
+                            <constraint firstItem="hZr-Bc-eY8" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="0dn-le-0Vl"/>
+                            <constraint firstAttribute="trailing" secondItem="hZr-Bc-eY8" secondAttribute="trailing" constant="20" symbolic="YES" id="FTl-5m-bQv"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="hZr-Bc-eY8" secondAttribute="bottom" constant="10" id="RM1-6c-h1F"/>
+                            <constraint firstItem="hZr-Bc-eY8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="5" id="VPB-qz-iJC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="imagePickerView" destination="xNw-nO-rI0" id="SuQ-aj-ehR"/>
+                        <outlet property="albumButton" destination="VwI-tp-CqV" id="Mdb-PQ-JGk"/>
+                        <outlet property="bottomTextField" destination="Guf-Ec-bHr" id="k9r-mc-qvh"/>
+                        <outlet property="cameraButton" destination="fBI-nX-a2J" id="oRJ-93-qec"/>
+                        <outlet property="cancelButton" destination="ZZj-Uj-21D" id="xrm-U2-VMd"/>
+                        <outlet property="imagePickerView" destination="IJ4-Ie-9G9" id="c9B-CZ-ldn"/>
+                        <outlet property="shareButton" destination="hxW-Hb-k6N" id="QY9-nc-nBe"/>
+                        <outlet property="toolBar" destination="Cpo-Si-BUj" id="sW2-QM-WSy"/>
+                        <outlet property="topTextField" destination="uVf-LD-try" id="OUh-LY-WD2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-415.19999999999999" y="-239.73013493253376"/>
+            <point key="canvasLocation" x="644.52773613193403" y="-1543.2"/>
         </scene>
     </scenes>
 </document>
