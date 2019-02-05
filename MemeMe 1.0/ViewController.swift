@@ -67,9 +67,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     //MARK set text fields initial string value and align center with default attributes
     func commonTextAttributes(textField: UITextField, textSource text: String){
         
-        textField.textAlignment = .center
+       
         textField.defaultTextAttributes = memeTextAttributes
         textField.text = text
+        textField.textAlignment = .center
         textField.delegate = self
         
     }
@@ -226,7 +227,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // TODO: Hide toobar and navbar
        
         toolBar.isHidden = true
-//        navigationBar.isHidden = true
+        navigationBar.isHidden = true
         
         //Rendeare view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
@@ -235,6 +236,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         UIGraphicsEndImageContext()
         
         //TODO: Show toobar and navbar
+        navigationBar.isHidden = false
         toolBar.isHidden = false
       
         
