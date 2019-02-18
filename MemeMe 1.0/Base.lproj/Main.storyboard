@@ -10,6 +10,77 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Sent Memes Collection View Controller-->
+        <scene sceneID="bix-gm-kny">
+            <objects>
+                <collectionViewController id="Jd1-Ze-SWd" customClass="SentMemesCollectionViewController" customModule="MemeMe_1_0" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Nc7-LB-n9U">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ra5-nk-hkC">
+                            <size key="itemSize" width="156" height="161"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CustomMemeCell" id="Dfc-XW-IlC" customClass="MemeCollectionViewCell" customModule="MemeMe_1_0" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="156" height="161"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="156" height="161"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="topLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tRn-d9-RJb" userLabel="topLabel">
+                                            <rect key="frame" x="33" y="21" width="102" height="17"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="17" id="eEo-VA-JnJ"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="bottomLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GOz-dZ-vgg" userLabel="bottomLabel">
+                                            <rect key="frame" x="21" y="123" width="114" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ClN-es-jTA">
+                                            <rect key="frame" x="20" y="46" width="116" height="69"/>
+                                        </imageView>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="ClN-es-jTA" firstAttribute="centerX" secondItem="GOz-dZ-vgg" secondAttribute="centerX" id="4Xo-Ec-m5L"/>
+                                    <constraint firstItem="ClN-es-jTA" firstAttribute="centerX" secondItem="Dfc-XW-IlC" secondAttribute="centerX" id="7Dd-0O-FsS"/>
+                                    <constraint firstItem="ClN-es-jTA" firstAttribute="top" secondItem="tRn-d9-RJb" secondAttribute="bottom" constant="8" symbolic="YES" id="KCz-8e-VAg"/>
+                                    <constraint firstItem="tRn-d9-RJb" firstAttribute="top" secondItem="Dfc-XW-IlC" secondAttribute="topMargin" constant="-7" id="Sdf-xj-uRW"/>
+                                    <constraint firstItem="tRn-d9-RJb" firstAttribute="leading" secondItem="Dfc-XW-IlC" secondAttribute="leadingMargin" constant="25" id="agj-st-hVR"/>
+                                    <constraint firstItem="tRn-d9-RJb" firstAttribute="trailing" secondItem="GOz-dZ-vgg" secondAttribute="trailing" id="dSK-Bc-lby"/>
+                                    <constraint firstItem="ClN-es-jTA" firstAttribute="centerY" secondItem="Dfc-XW-IlC" secondAttribute="centerY" id="dsh-Ok-yq1"/>
+                                    <constraint firstItem="ClN-es-jTA" firstAttribute="leading" secondItem="Dfc-XW-IlC" secondAttribute="leadingMargin" constant="12" id="lTq-PX-Vxy"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="tRn-d9-RJb" secondAttribute="trailing" constant="13" id="phd-r1-0pC"/>
+                                    <constraint firstItem="GOz-dZ-vgg" firstAttribute="top" secondItem="ClN-es-jTA" secondAttribute="bottom" constant="8" symbolic="YES" id="v1o-XK-ju3"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="bottomLabelCustomMeme" destination="GOz-dZ-vgg" id="cqY-eS-8Ll"/>
+                                    <outlet property="imageCustomMeme" destination="ClN-es-jTA" id="JEZ-QC-Zld"/>
+                                    <outlet property="topLabelCustomMeme" destination="tRn-d9-RJb" id="CjR-SF-mb6"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="Jd1-Ze-SWd" id="Ns7-B4-0xg"/>
+                            <outlet property="delegate" destination="Jd1-Ze-SWd" id="fOh-Wk-s6u"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vSl-LK-2gB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-732" y="-2137"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -102,7 +173,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1064.8" y="-2395.0524737631185"/>
+            <point key="canvasLocation" x="618" y="-2483"/>
         </scene>
     </scenes>
 </document>
