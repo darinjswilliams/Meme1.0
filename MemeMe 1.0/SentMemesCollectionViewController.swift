@@ -18,6 +18,19 @@ class SentMemesCollectionViewController: UICollectionViewController {
         return appDelegate.memes
     }
 
+    @IBOutlet weak var addMemesButton: UIBarButtonItem!
+    
+    @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
+    
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        //Refresh the data
+        collectionView!.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,25 +41,35 @@ class SentMemesCollectionViewController: UICollectionViewController {
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
+        let space:CGFloat = 1.0
+        let dimension = (self.view.frame.size.width - (2 * space)) / 3.0
+        let heightDimension =  (self.view.frame.size.height - (1 * space)) / 8.0
+    
+        //height be set up the same way as width
+        //Set spacing between items with minimuInteritemSpacing
+        flowLayout.minimumInteritemSpacing = space
+        
+        //Set spacing between rows
+        flowLayout.minimumLineSpacing = space
+        
+        //Set size of cells
+        flowLayout.itemSize = CGSize(width: dimension, height: heightDimension)
     }
 
 
-    // MARK: UICollectionViewDataSource
-
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+    @IBAction func editMemes(_ sender: Any) {
+      performSegue(withIdentifier: "CreateMemes", sender: self)
     }
-
-
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
         return self.memes.count
     }
 
+        //MARK: cellForItemAt return a custom cell
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        //deque the cell
+        //dequeue an instance of  the cell
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! MemeCollectionViewCell
     
         // Get the row for meme object
@@ -60,9 +83,10 @@ class SentMemesCollectionViewController: UICollectionViewController {
         return cell
     }
 
+        //MARK present a detail view of selected MEME
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //Get instance  of conroller from StoryBoard
-        let detailController = self.storyboard!.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
+        //Get instance  of the  DetailViewControll from StoryBoard
+        let detailController = self.storyboard!.instantiateViewController(withIdentifier: reuseIdentifier) as! MemeDetailViewController
        
         
         //Populae ViewController with selected item
