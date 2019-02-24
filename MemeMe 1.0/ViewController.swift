@@ -25,13 +25,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var bottomTextField: UITextField!
     
     
-    struct Meme {
-        var topText: String
-        var bottomText: String
-        var originalImage: UIImage?
-        var memedImage: UIImage?
-    }
-    
     let memeTextAttributes:[NSAttributedString.Key: Any] = [
         NSAttributedString.Key(rawValue: NSAttributedString.Key.strokeColor.rawValue): UIColor.black,
         NSAttributedString.Key(rawValue: NSAttributedString.Key.foregroundColor.rawValue): UIColor.white,
@@ -212,9 +205,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         // Create a meme
         let sharedMemedImage: UIImage = generateMemedImage()
-        _ = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!,
+        let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!,
                         originalImage: imagePickerView.image!, memedImage: sharedMemedImage)
         
+        
+        // Add it to the memes array in the Application Delegate
+        let object = UIApplication.shared.delegate
+        let appDelegate = object as! AppDelegate
+        appDelegate.memes.append(meme)
+        
+     
         //Dimiss the acitivity afer object has been saved
         dismiss(animated: true, completion: nil)
         
